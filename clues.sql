@@ -4,7 +4,7 @@
 -- populated country in Southern Europe, and we'll start looking for her there.
  
 -- TODO: Write SQL query here
-
+SELECT name FROM country WHERE population = (SELECT MIN(population) FROM country WHERE region = 'Southern Europe');
 
 -- Clue #2: Now that we're here, we have insight that Carmen was seen attending 
 -- language classes in this country's officially recognized language. Check our 
@@ -12,12 +12,13 @@
 -- call in a translator to work with you.
 
 -- TODO: Write SQL query here
-
+SELECT * FROM countrylanguage WHERE countrycode = 'VAT';
 
 -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's moved on to a different country, a country where people speak only the language she was learning. Find out which nearby country speaks nothing but that language.
-
+q
 -- TODO: Write SQL query here
-
+SELECT * FROM countrylanguage WHERE language = 'Italian';
+SELECT * FROM country WHERE country.code = 'SMR';
 
 -- Clue #4: We're booking the first flight out – maybe we've actually got a 
 -- chance to catch her this time. There are only two cities she could be flying 
@@ -26,7 +27,7 @@
 -- that country she might be flying to.
 
 -- TODO: Write SQL query here
-
+SELECT * FROM city WHERE countrycode = 'SMR';
 
 -- Clue #5: Oh no, she pulled a switch – there are two cities with very similar 
 -- names, but in totally different parts of the globe! She's headed to South 
@@ -35,7 +36,8 @@
 -- search for what country it's in. Hurry!
 
 -- TODO: Write SQL query here
-
+SELECT * FROM city WHERE city.name LIKE 'Serra%';
+SELECT * FROM country WHERE code = 'BRA';
 
 -- Clue #6: We're close! Our South American agent says she just got a taxi at
 -- the airport, and is headed towardsthe capital! Look up the country's 
@@ -43,7 +45,7 @@
 -- we'll follow right behind you!
 
 -- TODO: Write SQL query here
-
+SELECT * FROM city WHERE id = '211';
 
 -- Clue #7: She knows we're on to her – her taxi dropped her off at the 
 -- international airport, and she beat us tothe boarding gates. We have one 
@@ -66,3 +68,4 @@
 
 -- TODO: Write SQL query here
 
+SELECT * FROM city WHERE population = '91084';
